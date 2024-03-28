@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-03-28T15:31:07-04:00",
+    "exported_at": "2024-03-28T15:47:10-04:00",
     "name": "Rust - All Carbon Builds",
     "author": "sturdystubs@gmail.com",
     "description": "The only aim in Rust is to survive. To do this you will need to overcome struggles such as hunger, thirst and cold. Build a fire. Build a shelter. Kill animals for meat. Protect yourself from other players, and kill them for meat. Create alliances with other players and form a town. Do whatever it takes to survive.",
@@ -222,7 +222,7 @@
         },
         {
             "name": "Server Tags",
-            "description": "Server tags allow your server to be categorized. There is a list below of all tags. Separate each tag with a comma such as: weekly,NA,vanilla\r\n\r\nWipe length: monthly, biweekly, weekly Gamemodes: hardcore, vanilla, softcore, pve, roleplay, creative, minigame, training, battlefield, broyale, builds, tut Region: NA, SA, EU, WA, EA, OC, AF",
+            "description": "Server tags allow your server to be categorized. There is a list below of all tags. Separate each tag with a comma such as: weekly,NA,vanilla | All available server tags are listed here: https:\/\/wiki.facepunch.com\/rust\/server-browser-tags",
             "env_variable": "SERVER_TAGS",
             "default_value": "",
             "user_viewable": true,
@@ -238,16 +238,6 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string",
-            "field_type": "text"
-        },
-        {
-            "name": "Server Logo",
-            "description": "The primary logo used for your server. It will appear on your server's page in the browser.",
-            "env_variable": "SERVER_LOGO",
-            "default_value": "",
-            "user_viewable": true,
-            "user_editable": true,
-            "rules": "nullable|url",
             "field_type": "text"
         }
     ]
