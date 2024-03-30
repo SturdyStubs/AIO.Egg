@@ -1,6 +1,7 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
-    "meta": {
+    "meta":
+    {
         "version": "PTDL_v2",
         "update_url": null
     },
@@ -8,29 +9,36 @@
     "name": "Rust - All Carbon Builds",
     "author": "support@pterodactyl.io",
     "description": "The only aim in Rust is to survive. To do this you will need to overcome struggles such as hunger, thirst and cold. Build a fire. Build a shelter. Kill animals for meat. Protect yourself from other players, and kill them for meat. Create alliances with other players and form a town. Do whatever it takes to survive.",
-    "features": [
+    "features":
+    [
         "steam_disk_space"
     ],
-    "docker_images": {
-        "ghcr.io\/sturdystubs\/games:carbon": "ghcr.io\/sturdystubs\/games:carbon",
-        "ghcr.io\/sturdystubs\/games:validate": "ghcr.io\/sturdystubs\/games:validate"
+    "docker_images":
+    {
+        "ghcr.io/sturdystubs/games:carbon": "ghcr.io/sturdystubs/games:carbon",
+        "ghcr.io/sturdystubs/games:validate": "ghcr.io/sturdystubs/games:validate"
     },
-    "file_denylist": [],
-    "startup": ".\/RustDedicated -batchmode $( [ \"${FRAMEWORK}\" == \"oxide\" ] && echo +oxide.directory {{MODDING_ROOT}} || [ \"${FRAMEWORK}\" == \"vanilla\" ] && echo \"\" || echo -carbon.rootdir {{MODDING_ROOT}} )\r\n +server.port {{SERVER_PORT}} +server.queryport {{QUERY_PORT}} +server.identity \"rust\" +rcon.port {{RCON_PORT}} +rcon.web true +server.hostname \\\"{{HOSTNAME}}\\\" +server.level \\\"{{LEVEL}}\\\" +server.description \\\"{{DESCRIPTION}}\\\" +server.url \\\"{{SERVER_URL}}\\\" +server.headerimage \\\"{{SERVER_IMG}}\\\" +server.logoimage \\\"{{SERVER_LOGO}}\\\" +server.maxplayers {{MAX_PLAYERS}} +rcon.password \\\"{{RCON_PASS}}\\\" +server.saveinterval {{SAVEINTERVAL}} +app.port {{APP_PORT}}  $( [ -z ${MAP_URL} ] && printf %s \"+server.worldsize \\\"{{WORLD_SIZE}}\\\" +server.seed \\\"{{WORLD_SEED}}\\\"\" || printf %s \"+server.levelurl {{MAP_URL}}\" ) $( [ -n \"{{APP_PUBLIC_IP}}\" ] && echo \"+app.publicip \\\"{{APP_PUBLIC_IP}}\\\"\" ) $( [ -n \"{{SERVER_TAGS}}\" ] && echo \"+server.tags \\\"{{SERVER_TAGS}}\\\"\" ) {{ADDITIONAL_ARGS}}",
-    "config": {
+    "file_denylist":
+    [],
+    "startup": "./RustDedicated -batchmode $( [ \"${FRAMEWORK}\" == \"oxide\" ] && echo +oxide.directory {{MODDING_ROOT}} || [ \"${FRAMEWORK}\" == \"vanilla\" ] && echo \"\" || echo -carbon.rootdir {{MODDING_ROOT}} )\r\n +server.port {{SERVER_PORT}} +server.queryport {{QUERY_PORT}} +server.identity \"rust\" +rcon.port {{RCON_PORT}} +rcon.web true +server.hostname \\\"{{HOSTNAME}}\\\" +server.level \\\"{{LEVEL}}\\\" +server.description \\\"{{DESCRIPTION}}\\\" +server.url \\\"{{SERVER_URL}}\\\" +server.headerimage \\\"{{SERVER_IMG}}\\\" +server.logoimage \\\"{{SERVER_LOGO}}\\\" +server.maxplayers {{MAX_PLAYERS}} +rcon.password \\\"{{RCON_PASS}}\\\" +server.saveinterval {{SAVEINTERVAL}} +app.port {{APP_PORT}}  $( [ -z ${MAP_URL} ] && printf %s \"+server.worldsize \\\"{{WORLD_SIZE}}\\\" +server.seed \\\"{{WORLD_SEED}}\\\"\" || printf %s \"+server.levelurl {{MAP_URL}}\" ) $( [ -n \"{{APP_PUBLIC_IP}}\" ] && echo \"+app.publicip \\\"{{APP_PUBLIC_IP}}\\\"\" ) $( [ -n \"{{SERVER_TAGS}}\" ] && echo \"+server.tags \\\"{{SERVER_TAGS}}\\\"\" ) {{ADDITIONAL_ARGS}}",
+    "config":
+    {
         "files": "{}",
         "startup": "{\r\n    \"done\": \"Server startup complete\"\r\n}",
         "logs": "{}",
         "stop": "quit"
     },
-    "scripts": {
-        "installation": {
-            "script": "#!\/bin\/bash\r\n# steamcmd Base Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n\r\nSRCDS_APPID=258550\r\n\r\n## just in case someone removed the defaults.\r\nif [ \"${STEAM_USER}\" == \"\" ]; then\r\n    echo -e \"steam user is not set.\\n\"\r\n    echo -e \"Using anonymous user.\\n\"\r\n    STEAM_USER=anonymous\r\n    STEAM_PASS=\"\"\r\n    STEAM_AUTH=\"\"\r\nelse\r\n    echo -e \"user set to ${STEAM_USER}\"\r\nfi\r\n\r\n## download and install steamcmd\r\ncd \/tmp\r\nmkdir -p \/mnt\/server\/steamcmd\r\ncurl -sSL -o steamcmd.tar.gz https:\/\/steamcdn-a.akamaihd.net\/client\/installer\/steamcmd_linux.tar.gz\r\ntar -xzvf steamcmd.tar.gz -C \/mnt\/server\/steamcmd\r\nmkdir -p \/mnt\/server\/steamapps # Fix steamcmd disk write error when this folder is missing\r\ncd \/mnt\/server\/steamcmd\r\n\r\n# SteamCMD fails otherwise for some reason, even running as root.\r\n# This is changed at the end of the install process anyways.\r\nchown -R root:root \/mnt\r\nexport HOME=\/mnt\/server\r\n\r\n## install game using steamcmd\r\n.\/steamcmd.sh +force_install_dir \/mnt\/server +login ${STEAM_USER} ${STEAM_PASS} ${STEAM_AUTH} +app_update ${SRCDS_APPID} ${EXTRA_FLAGS} validate +quit ## other flags may be needed depending on install. looking at you cs 1.6\r\n\r\n## set up 32 bit libraries\r\nmkdir -p \/mnt\/server\/.steam\/sdk32\r\ncp -v linux32\/steamclient.so ..\/.steam\/sdk32\/steamclient.so\r\n\r\n## set up 64 bit libraries\r\nmkdir -p \/mnt\/server\/.steam\/sdk64\r\ncp -v linux64\/steamclient.so ..\/.steam\/sdk64\/steamclient.so",
-            "container": "ghcr.io\/pterodactyl\/installers:debian",
+    "scripts":
+    {
+        "installation":
+        {
+            "script": "#!/bin/bash\r\n# steamcmd Base Installation Script\r\n#\r\n# Server Files: /mnt/server\r\n\r\nSRCDS_APPID=258550\r\n\r\n## just in case someone removed the defaults.\r\nif [ \"${STEAM_USER}\" == \"\" ]; then\r\n    echo -e \"steam user is not set.\\n\"\r\n    echo -e \"Using anonymous user.\\n\"\r\n    STEAM_USER=anonymous\r\n    STEAM_PASS=\"\"\r\n    STEAM_AUTH=\"\"\r\nelse\r\n    echo -e \"user set to ${STEAM_USER}\"\r\nfi\r\n\r\n## download and install steamcmd\r\ncd /tmp\r\nmkdir -p /mnt/server/steamcmd\r\ncurl -sSL -o steamcmd.tar.gz https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz\r\ntar -xzvf steamcmd.tar.gz -C /mnt/server/steamcmd\r\nmkdir -p /mnt/server/steamapps # Fix steamcmd disk write error when this folder is missing\r\ncd /mnt/server/steamcmd\r\n\r\n# SteamCMD fails otherwise for some reason, even running as root.\r\n# This is changed at the end of the install process anyways.\r\nchown -R root:root /mnt\r\nexport HOME=/mnt/server\r\n\r\n## install game using steamcmd\r\n./steamcmd.sh +force_install_dir /mnt/server +login ${STEAM_USER} ${STEAM_PASS} ${STEAM_AUTH} +app_update ${SRCDS_APPID} ${EXTRA_FLAGS} validate +quit ## other flags may be needed depending on install. looking at you cs 1.6\r\n\r\n## set up 32 bit libraries\r\nmkdir -p /mnt/server/.steam/sdk32\r\ncp -v linux32/steamclient.so ../.steam/sdk32/steamclient.so\r\n\r\n## set up 64 bit libraries\r\nmkdir -p /mnt/server/.steam/sdk64\r\ncp -v linux64/steamclient.so ../.steam/sdk64/steamclient.so",
+            "container": "ghcr.io/pterodactyl/installers:debian",
             "entrypoint": "bash"
         }
     },
-    "variables": [
+    "variables":
+    [
         {
             "name": "Server Name",
             "description": "The name of your server in the public server list.",
@@ -55,7 +63,7 @@
             "name": "URL",
             "description": "The URL for your server. This is what comes up when clicking the \"Visit Website\" button.",
             "env_variable": "SERVER_URL",
-            "default_value": "http:\/\/pterodactyl.io",
+            "default_value": "http://pterodactyl.io",
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|url",
@@ -98,12 +106,12 @@
             "default_value": "CHANGEME",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|regex:\/^[\\w.-]*$\/|max:64",
+            "rules": "required|regex:/^[\\w.-]*$/|max:64",
             "field_type": "text"
         },
         {
             "name": "Save Interval",
-            "description": "Sets the server\u2019s auto-save interval in seconds.",
+            "description": "Sets the server’s auto-save interval in seconds.",
             "env_variable": "SAVEINTERVAL",
             "default_value": "60",
             "user_viewable": true,
@@ -223,7 +231,7 @@
         },
         {
             "name": "Server Tags",
-            "description": "Server tags allow your server to be categorized. There is a list below of all tags. Separate each tag with a comma such as: weekly,NA,vanilla | All available server tags are listed here: https:\/\/wiki.facepunch.com\/rust\/server-browser-tags",
+            "description": "Server tags allow your server to be categorized. There is a list below of all tags. Separate each tag with a comma such as: weekly,NA,vanilla | All available server tags are listed here: https://wiki.facepunch.com/rust/server-browser-tags",
             "env_variable": "SERVER_TAGS",
             "default_value": "vanilla",
             "user_viewable": true,
@@ -256,6 +264,36 @@
             "description": "Determine if you want the server to validate the game files every time the server starts.",
             "env_variable": "VALIDATE",
             "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "Chaos Code Extension",
+            "description": "Download and use the ChaosCode extension?",
+            "env_variable": "CHAOS_EXT",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "Discord Extension",
+            "description": "Download and use the Discord Extension?",
+            "env_variable": "DISCORD_EXT",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "RustEdit Extension",
+            "description": "Download and install the RustEdit Extension?",
+            "env_variable": "RUSTEDIT_EXT",
+            "default_value": "0",
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|boolean",
