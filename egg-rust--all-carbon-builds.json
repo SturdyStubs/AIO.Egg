@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-03-30T05:04:57-04:00",
+    "exported_at": "2024-03-31T21:16:13-04:00",
     "name": "Rust - All Carbon Builds",
     "author": "support@pterodactyl.io",
     "description": "The only aim in Rust is to survive. To do this you will need to overcome struggles such as hunger, thirst and cold. Build a fire. Build a shelter. Kill animals for meat. Protect yourself from other players, and kill them for meat. Create alliances with other players and form a town. Do whatever it takes to survive.",
@@ -174,7 +174,7 @@
             "name": "World Seed",
             "description": "The seed for a procedural map.",
             "env_variable": "WORLD_SEED",
-            "default_value": "",
+            "default_value": "1234",
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string",
@@ -251,16 +251,6 @@
             "field_type": "text"
         },
         {
-            "name": "Validate Game Files",
-            "description": "Determine if you want the server to validate the game files every time the server starts.",
-            "env_variable": "VALIDATE",
-            "default_value": "1",
-            "user_viewable": true,
-            "user_editable": true,
-            "rules": "required|boolean",
-            "field_type": "text"
-        },
-        {
             "name": "Chaos Code Extension",
             "description": "Download and use the ChaosCode extension?",
             "env_variable": "CHAOS_EXT",
@@ -285,6 +275,16 @@
             "description": "Download and install the RustEdit Extension?",
             "env_variable": "RUSTEDIT_EXT",
             "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "Validate Game Files",
+            "description": "Determine if you want the server to validate the game files every time the server starts.",
+            "env_variable": "VALIDATE",
+            "default_value": "1",
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|boolean",
