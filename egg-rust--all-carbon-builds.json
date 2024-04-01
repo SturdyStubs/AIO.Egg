@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-03-31T21:16:13-04:00",
+    "exported_at": "2024-03-31T21:53:16-04:00",
     "name": "Rust - All Carbon Builds",
     "author": "support@pterodactyl.io",
     "description": "The only aim in Rust is to survive. To do this you will need to overcome struggles such as hunger, thirst and cold. Build a fire. Build a shelter. Kill animals for meat. Protect yourself from other players, and kill them for meat. Create alliances with other players and form a town. Do whatever it takes to survive.",
@@ -211,16 +211,6 @@
             "field_type": "text"
         },
         {
-            "name": "App Public IP",
-            "description": "The IP address assigned for your Rust+ node. The default value is 0.0.0.0",
-            "env_variable": "APP_PUBLIC_IP",
-            "default_value": "",
-            "user_viewable": true,
-            "user_editable": true,
-            "rules": "nullable|ipv4",
-            "field_type": "text"
-        },
-        {
             "name": "Server Tags",
             "description": "Server tags allow your server to be categorized. There is a list below of all tags. Separate each tag with a comma such as: weekly,NA,vanilla | All available server tags are listed here: https:\/\/wiki.facepunch.com\/rust\/server-browser-tags",
             "env_variable": "SERVER_TAGS",
@@ -288,6 +278,16 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "App Public IP",
+            "description": "Unless you know what you're doing. Leave this field blank!!!! This is very important! Please do not change this unless you have read the Rust+ App documentation here: https:\/\/wiki.facepunch.com\/rust\/rust-companion-server",
+            "env_variable": "APP_PUBLIC_IP",
+            "default_value": "",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "nullable|string|max:15",
             "field_type": "text"
         }
     ]
