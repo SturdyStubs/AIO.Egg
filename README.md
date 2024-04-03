@@ -1,4 +1,4 @@
-## Custom Carbon Egg
+## All in One Egg
 
 SturdyStubs has also created a Custom Carbon Egg as well. This is a newer addition to the Carbon egg collection. This egg includes all of the Carbon builds, as well as a build for Oxide. This enables you to easily test the difference in performance between Oxide and Carbon. It also includes some great QoL features!
 
