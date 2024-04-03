@@ -1,8 +1,8 @@
 ## All in One Egg
 
-SturdyStubs has also created a Custom Carbon Egg as well. This is a newer addition to the Carbon egg collection. This egg includes all of the Carbon builds, as well as a build for Oxide. This enables you to easily test the difference in performance between Oxide and Carbon. It also includes some great QoL features!
+SturdyStubs has also created a custom egg as well. This is a newer addition to the Carbon egg collection. This egg includes all of the Carbon builds, as well as a build for Oxide and Oxide staging. This enables you to easily test the difference in performance between Oxide and Carbon. It also includes some great QoL features!
 
-You can download the egg [here](https://raw.githubusercontent.com/SturdyStubs/Carbon.Egg/main/egg-rust--all-carbon-builds.json).
+You can download the egg [here](https://github.com/SturdyStubs/AIO.Egg/raw/main/egg-rust--all-carbon-builds.json).
 
 ### Adding The Egg To The Nest
 
