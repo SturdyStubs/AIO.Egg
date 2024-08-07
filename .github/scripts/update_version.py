@@ -112,7 +112,7 @@ def update_version_in_egg(branch):
 
 def main():
     repo = 'SturdyStubs/AIO.Egg'
-    token = os.environ['PERSONAL_ACTION_TOKEN']
+    token = os.environ['PERSONAL_ACCESS_TOKEN']
     branch = sys.argv[1]
     
     latest_release = get_latest_release(repo)
@@ -134,6 +134,7 @@ def main():
             print("Release and assets uploaded successfully")
         else:
             print("Failed to upload assets")
+            exit(1)
     else:
         print("Failed to create release")
 
