@@ -112,7 +112,7 @@ def update_version_in_egg(branch):
 
 def main():
     repo = 'SturdyStubs/AIO.Egg'
-    token = os.environ['PERSONAL_ACCESS_TOKEN']
+    token = os.environ['PERSONAL_ACTION_TOKEN']
     branch = sys.argv[1]
     
     latest_release = get_latest_release(repo)
