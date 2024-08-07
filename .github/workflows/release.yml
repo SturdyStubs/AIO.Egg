@@ -20,7 +20,7 @@ jobs:
         python-version: '3.x'
 
     - name: Install dependencies
-      run: pip install json sys requests re os zipfile hashlib
+      run: pip install requests
 
     - name: Bundle Files
       run: |
