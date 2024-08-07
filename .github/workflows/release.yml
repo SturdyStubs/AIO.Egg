@@ -27,6 +27,7 @@ jobs:
         new_version=$(python .github/scripts/update_version.py $branch)
         echo "new_version=$new_version" >> $GITHUB_ENV
 
+
     - name: Commit and Push Changes
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_ACTION_TOKEN }}
