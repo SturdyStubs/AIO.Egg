@@ -309,7 +309,7 @@
             "default_value": "vanilla",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|in:vanilla,survival,softcore,hardcore",
+            "rules": "nullable|in:vanilla,survival,softcore,hardcore",
             "field_type": "text"
         },
         {
