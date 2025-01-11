@@ -304,12 +304,12 @@
         },
         {
             "name": "Gamemode",
-            "description": "Gamemode of Rust",
+            "description": "Gamemode of Rust - Choose between none (default),vanilla,survival,softcore,hardcore",
             "env_variable": "GAMEMODE",
             "default_value": "vanilla",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "nullable|in:vanilla,survival,softcore,hardcore",
+            "rules": "nullable|string",
             "field_type": "text"
         },
         {
